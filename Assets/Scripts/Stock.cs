@@ -114,9 +114,10 @@ public class Stock : MonoBehaviour
             BroadCastText.color = StartColor;
             BroadCastText.text = "";
 
-            if (!OnBroadCast)
+            if (OnBroadCast == false)
             {
                 StartColor.a = 200;
+                OnBroadCast = false;
                 yield break;
             }
         }
