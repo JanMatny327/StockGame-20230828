@@ -60,7 +60,8 @@ public class Stock : MonoBehaviour
     public float Nope = 0.5f;
     public float RandomEventTimer = 0;
     public float RandomEventTimer1 = 0;
-    public float RandomEventTimer2 = 10;
+    public float RandomEventTimer2 = 1f;
+    public float RandomEventTimer3 = 10f;
     public float NopeCount = -10;
     public float EventCount = 10;
     public int EventCount1 = 0;
@@ -69,7 +70,7 @@ public class Stock : MonoBehaviour
     public float minuspercent2 = -30;
     public float pluspercent1 = +10;
     public float pluspercent2 = +30;
-    public bool EventCheck = false;
+    public bool EventCheck = true;
     public float RandomEventTime;
     float Stockpercent;
     float Stockpercent1;
@@ -163,7 +164,7 @@ public class Stock : MonoBehaviour
     {
         if (EventCheck == true)
         {
-            RandomEventTime = Random.Range(RandomEventTimer1, RandomEventTimer2);
+            RandomEventTimer1 = Random.Range(RandomEventTimer1, RandomEventTimer2);
             EventCheck = false;
         }
     }
@@ -171,7 +172,7 @@ public class Stock : MonoBehaviour
 
     public void RandomEvent()
     {
-        if (RandomEventTimer >= RandomEventTimer1 || RandomEventTimer >= RandomEventTimer2)
+        if (RandomEventTimer >= RandomEventTimer1)
         {
             float RandomEventTime = Random.Range(NopeCount, EventCount);
 
