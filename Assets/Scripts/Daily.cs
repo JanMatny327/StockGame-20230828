@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Data.SqlTypes;
+using JetBrains.Annotations;
+using Microsoft.Win32.SafeHandles;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class Daily : MonoBehaviour
 {
@@ -10,14 +13,16 @@ public class Daily : MonoBehaviour
     public TMP_Text Monthly;
     public float DaliyTimer;
     public int Daliy = 30;
-    public int RandomEvent;
-  
+
+
     private void Update()
     {
         MonthlyCheck();
         DaliyTimer += Time.deltaTime;
-        
+
     }
+
+
 
     void MonthlyCheck()
     {
