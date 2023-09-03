@@ -717,7 +717,7 @@ MonoBehaviour:
   HisuStock: {fileID: 2120746197}
   MyInfoUI: {fileID: 2093335327}
   StockButton_2: {fileID: 2145222472}
-  Cancel: {fileID: 0}
+  Cancel: {fileID: 1189695677}
 --- !u!4 &17594317
 Transform:
   m_ObjectHideFlags: 0
