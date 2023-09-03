@@ -5,7 +5,6 @@ using TMPro;
 using System.Data.SqlTypes;
 using JetBrains.Annotations;
 using Microsoft.Win32.SafeHandles;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class Daily : MonoBehaviour
 {
@@ -26,7 +25,7 @@ public class Daily : MonoBehaviour
 
     void MonthlyCheck()
     {
-        Monthly.text = "Monthly Day : " + Daliy;
+        Monthly.text = "월세납부까지 남은 일 : " + Daliy +"일";
 
         if (DaliyTimer >= 120)
         {
