@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        remaining_debtText.text = "현재 남은 빚 : " + stock.GetThousandcommaText(debt) + "원";
         DebtInputFieldobj.SetActive(false);
     }
     void Update()

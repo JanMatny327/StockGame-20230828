@@ -32,8 +32,8 @@ public class StockBox : MonoBehaviour
     public float stockChange3;
     public float stockChange4;
     public float stockChange5;
-    public float minpercent = -60;
-    public float maxpercent = +70;
+    public float minpercent = -50;
+    public float maxpercent = 50;
     public bool OnBroadCast = false;
 
     [Header("주식 현재 가격 카운팅")]
