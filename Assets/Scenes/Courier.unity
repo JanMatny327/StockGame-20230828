@@ -800,11 +800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c774053bddad5548a60aa48938651ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHp: 3
-  speed: 2.5
-  EnemySprite: {fileID: 0}
-  EnemyHitSprite: {fileID: 0}
-  playerController: {fileID: 0}
 --- !u!1 &1892652993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5826923815932985683, guid: 67423033b650ef643bfcf421a8f4ee67, type: 3}
