@@ -9,6 +9,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 _offset;
     private Vector3 _currentVelocity = Vector3.zero;
     private float smoothTime = 0.3f;
+    private float fixedYPosition = 0.0f;
     void Awake()
     {
         _offset = transform.position - target.position;
@@ -21,6 +22,7 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         Vector3 targetPosition = target.position + _offset;
+        targetPosition.y = fixedYPosition;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, smoothTime);
     }
 }

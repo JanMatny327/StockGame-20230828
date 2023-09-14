@@ -43,6 +43,9 @@ public class Stock : MonoBehaviour
     public float pluspercent1 = +10f;
     public float pluspercent2 = +30f;
     public bool EventCheck = true;
+
+    [Header("何啊牧刨明 包府")]
+    public GameObject DeliveryFailText;
    
    
 
