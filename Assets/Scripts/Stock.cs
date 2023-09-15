@@ -46,6 +46,8 @@ public class Stock : MonoBehaviour
 
     [Header("何啊牧刨明 包府")]
     public GameObject DeliveryFailText;
+    public TMP_Text ClearText;
+    public GameObject ClearTextobj;
    
    
 

@@ -24,9 +24,16 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rigid;
     public Animator animator;
     Stock stock;
+    Delivery delivery;
 
     [Header("불러온 컴포넌트")]
     public TMP_Text HPText;
+
+
+    [Header("클리어 보상")]
+    public float ClearMoney;
+    public float ClearMoneymin = 1000f;
+    public float ClearMoneymax = 10000f;
     
     private void Awake()
     {
@@ -105,22 +112,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetInteger("JumpCount", 0);
         }
-
-        // 총알 발사 애니메이션
-        if (isShoot == true)
-        {
-            animator.SetInteger("Shooting", 1);
-            Invoke("Shootoff", 1f);
-        }
     }
 
-    public void Shootoff()
-    {
-        animator.SetInteger("Shooting", 0);
-        isShoot = false;
-    }
 
-    private void PlayerStateCheck()
+
+    public void PlayerStateCheck()
     {
         HPText.text = "현재 남은 체력 : " + hp;
 
@@ -130,12 +126,31 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("InGame");
             stock.DeliveryFailText.SetActive(true);
             Invoke("FailTextOff", 1.5f);
+            stock.money -= 10000;
         }
     }
 
     private void FailTextOff()
     {
         stock.DeliveryFailText.SetActive(false);
+    }
+
+    private void DeliveryComplet()
+    {
+        if (this.transform.position.x >= delivery.ClearDistance)
+        {
+            SceneManager.LoadScene("InGame");
+            ClearMoney = UnityEngine.Random.Range(ClearMoneymin, ClearMoneymax);
+            stock.money += (int)ClearMoney;
+            stock.ClearText.text = "목적지까지 배달을 성공하여 배달비를 받았습니다. ( 배달비 : " + (int)ClearMoney + "원)";
+            stock.ClearTextobj.SetActive(true);
+            Invoke("ClearTextoff", 2f);
+        }
+    }
+
+    private void ClearTextoff()
+    {
+        stock.ClearTextobj.SetActive(false);
     }
 }
 
