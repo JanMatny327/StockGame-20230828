@@ -1,6 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public bool isJump = false; // 현재 점프상태
     public bool isGround = true; // 현재 바닥인가 여부확인
     public bool isShoot = false; // 현재 총알 발사 상태 여부확인
+    public int JumpCount = 2;
 
     float h; 
     float v;
@@ -24,17 +23,20 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rigid;
     public Animator animator;
     Stock stock;
-    Delivery delivery;
 
     [Header("불러온 컴포넌트")]
     public TMP_Text HPText;
+    public Transform Player;
 
 
     [Header("클리어 보상")]
-    public float ClearMoney;
-    public float ClearMoneymin = 1000f;
-    public float ClearMoneymax = 10000f;
-    
+    public int ClearMoney;
+    public int ClearMoneymin = 1000;
+    public int ClearMoneymax = 10000;
+
+    [Header("변수관리")]
+    private bool hasArrived = false;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -62,28 +64,16 @@ public class PlayerController : MonoBehaviour
         }
 
         // 점프키
-        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+        if (Input.GetKeyDown(KeyCode.Space) && JumpCount > 0)
         {
             rigid.AddForce(new Vector2(0f, JumpForce));
             isJump = true;
+            JumpCount--;
         }
-        else if (this.transform.position.y > -3.20f)
+        else if (this.transform.position.y < -3.23)
         {
-            isJump = true;
-            isGround = false;
-        }
-        else if (this.transform.position.y <= 3.20f)
-        {
-            isGround = true;
             isJump = false;
-        }
-    }
-
-    public void InputShoot()
-    {
-        if (Input.GetKey(KeyCode.R))
-        {
-            isShoot = true;
+            JumpCount = 2;
         }
     }
     
@@ -94,7 +84,7 @@ public class PlayerController : MonoBehaviour
         v = Input.GetAxis("Vertical");
         
         // 이동 애니메이션 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
         {
             t_Animator.SetInteger("hAxisRaw", 1);
         }
@@ -108,7 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetInteger("JumpCount", 1);
         }
-        else if (isGround == true &&  isJump == false)
+        else if (isJump == false)
         {
             animator.SetInteger("JumpCount", 0);
         }
@@ -128,29 +118,6 @@ public class PlayerController : MonoBehaviour
             Invoke("FailTextOff", 1.5f);
             stock.money -= 10000;
         }
-    }
-
-    private void FailTextOff()
-    {
-        stock.DeliveryFailText.SetActive(false);
-    }
-
-    private void DeliveryComplet()
-    {
-        if (this.transform.position.x >= delivery.ClearDistance)
-        {
-            SceneManager.LoadScene("InGame");
-            ClearMoney = UnityEngine.Random.Range(ClearMoneymin, ClearMoneymax);
-            stock.money += (int)ClearMoney;
-            stock.ClearText.text = "목적지까지 배달을 성공하여 배달비를 받았습니다. ( 배달비 : " + (int)ClearMoney + "원)";
-            stock.ClearTextobj.SetActive(true);
-            Invoke("ClearTextoff", 2f);
-        }
-    }
-
-    private void ClearTextoff()
-    {
-        stock.ClearTextobj.SetActive(false);
     }
 }
 

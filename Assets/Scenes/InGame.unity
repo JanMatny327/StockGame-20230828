@@ -2287,6 +2287,7 @@ GameObject:
   - component: {fileID: 278397753}
   - component: {fileID: 278397752}
   - component: {fileID: 278397751}
+  - component: {fileID: 278397755}
   m_Layer: 5
   m_Name: MainInGameUI
   m_TagString: Untagged
@@ -2395,6 +2396,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &278397755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278397749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e753dd3134b4b46bc452a9c4937b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClearDistanceMin: 20
+  ClearDistanceMax: 40
+  ClearDistance: 0
 --- !u!1 &339689698
 GameObject:
   m_ObjectHideFlags: 0
@@ -7129,9 +7145,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1461038717}
-        m_TargetAssemblyTypeName: SceneManager1, Assembly-CSharp
-        m_MethodName: CourierButton
+      - m_Target: {fileID: 278397755}
+        m_TargetAssemblyTypeName: Delivery, Assembly-CSharp
+        m_MethodName: ButtonInput_Delivery
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
