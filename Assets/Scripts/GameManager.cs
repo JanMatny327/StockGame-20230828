@@ -36,16 +36,6 @@ public class GameManager : MonoBehaviour
     {
         GameLifeText.text = "남은 게임목숨 : " + GameLife + "개";
 
-        if (stock.money < 0)
-        {
-            if (GameLife > 0)
-            {
-                stock.money = 250000;
-
-                GameLife = GameLife - 1;
-            }
-        }
-
         if (GameLife == 0)
         {
             SceneManager.LoadScene("GameOver");

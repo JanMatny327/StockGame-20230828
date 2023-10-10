@@ -2408,9 +2408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e753dd3134b4b46bc452a9c4937b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClearDistanceMin: 20
-  ClearDistanceMax: 40
-  ClearDistance: 0
 --- !u!1 &339689698
 GameObject:
   m_ObjectHideFlags: 0
@@ -7145,9 +7142,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 278397755}
-        m_TargetAssemblyTypeName: Delivery, Assembly-CSharp
-        m_MethodName: ButtonInput_Delivery
+      - m_Target: {fileID: 278397751}
+        m_TargetAssemblyTypeName: SceneManager1, Assembly-CSharp
+        m_MethodName: CourierButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9655,7 +9652,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b788d234473436447a80365e0bce284b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0

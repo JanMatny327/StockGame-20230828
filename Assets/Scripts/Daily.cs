@@ -10,10 +10,14 @@ public class Daily : MonoBehaviour
 {
     public Stock stock;
     public TMP_Text Monthly;
+    private GameManager gameManager;
     public float DaliyTimer;
     public int Daliy = 30;
 
-
+    private void Awake()
+    {
+        gameManager = GetComponent<GameManager>();
+    }
     private void Update()
     {
         MonthlyCheck();
@@ -36,8 +40,14 @@ public class Daily : MonoBehaviour
         if (Daliy == 0)
         {
             Daliy = 30;
-            stock.money = stock.money - 150000;
-            
+            if (stock.money >= 150000)
+            {
+                stock.money = stock.money - 150000;
+            }
+            else
+            {
+                gameManager.GameLife -= 1;
+            }
         }
     }
 }
